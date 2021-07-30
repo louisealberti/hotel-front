@@ -1,0 +1,77 @@
+<div class="container w-50">
+    <form [formGroup]="profileForm" (ngSubmit)="updateProfile()" class="col g-3 needs-validation">
+        <!-- Form First Line -->
+        <div class="row h-75">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input formControlName="firstName" type="text" class="form-control" id="floatingFirstName"
+                        placeholder="nome" aria-label="First name" required>
+                    <label class="col-sm-2 col-form-label" for="floatingFirstName">nome</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input formControlName="lastName" type="text" class="form-control" id="floatingLastname"
+                        placeholder="sobrenome" aria-label="Last name" required>
+                    <label for="floatingLastname">sobrenome</label>
+                </div>
+            </div>
+        </div>
+        <!-- Form Second Line -->
+        <div class="row">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input formControlName="email" type="email" class="form-control" id="floatingEmail"
+                        placeholder="e-mail" aria-label="e-mail" required>
+                    <label for="floatingEmail">e-mail</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input formControlName="cpf" type="text" class="form-control" placeholder="CPF" aria-label="CPF"
+                        required>
+                    <label for="floatingCPF">CPF</label>
+                </div>
+            </div>
+        </div>
+        <!-- Form Third Line -->
+        <div class="row">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input formControlName="phone" type="text" class="form-control" id="floatingPhone"
+                        placeholder="telefone" aria-label="Phone Number" required>
+                    <label for="floatingPhone">telefone</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input formControlName="address" type="text" class="form-control" id="floatingAddress"
+                        placeholder="endereço" aria-label="Address" required>
+                    <label for="floatingAddress">endereço</label>
+                </div>
+            </div>
+        </div>
+        <!-- Form Fourth Line -->
+        <div class="row">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input formControlName="password" type="text" class="form-control" id="floatingPassword"
+                        placeholder="senha" aria-label="Password" required>
+                    <label for="floatingPassword">senha</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input formControlName="passwordConfirmation" type="text" class="form-control"
+                        id="floatingPasswordConfirm" placeholder="confirmar senha" aria-label="Password Confirmation"
+                        required>
+                    <label for="floatingPasswordConfirm">confirma senha</label>
+                </div>
+            </div>
+        </div>
+        <div class="d-grid col-2 mx-auto">
+            <button type="submit" [disabled]="!profileForm.valid" (click)="updateProfile()"
+                class="btn btn-warning">Alterar</button>
+        </div>
+    </form>
+</div>
