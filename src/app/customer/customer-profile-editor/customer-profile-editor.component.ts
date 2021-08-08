@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { CustomerService } from "./customer.service";
+import { CustomerService } from "../customer.service";
 
 @Component({
     selector: 'app-customer-profile-editor',

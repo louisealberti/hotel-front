@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CustomerHomeComponent } from './customer-home.component';
-import { CustomerListComponent } from './customer-list.component';
-import { CustomerProfileEditorComponent } from './customer-profile-editor.component';
-import { CustomerProfileComponent } from './customer-profile.component';
-import { CustomerRegistrationComponent } from './customer-registration.component';
-import { CustomerReservationComponent } from './customer-reservation.component';
+import { CustomerHomeComponent } from './customer-home/customer-home.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
+import { CustomerProfileEditorComponent } from './customer-profile-editor/customer-profile-editor.component';
+import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
+import { CustomerRegistrationComponent } from './customer-registration/customer-registration.component';
+import { CustomerReservationComponent } from './customer-reservation/customer-reservation.component';
 
 const routes: Routes = [
-  { path: 'home', component: CustomerHomeComponent },
+  { path: 'customer/home', component: CustomerHomeComponent },
   { path: 'customer/profile/:id', component: CustomerProfileComponent },
   { path: 'customer/profile', component: CustomerProfileComponent },
   { path: 'customer/profile/editor', component: CustomerProfileEditorComponent },

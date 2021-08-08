@@ -1,0 +1,41 @@
+<div class="container w-50">
+    <form [formGroup]="roomForm" (ngSubmit)="submit()" class="col g-3 needs-validation" novalidate>
+        <!-- Form First Line -->
+        <div class="row h-75">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input formControlName="number" type="number" class="form-control" id="floatingNumber"
+                        placeholder="número" aria-label="Number" required>
+                    <label class="col-sm-2 col-form-label" for="floatingNumber">número</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input formControlName="type" type="text" class="form-control" id="floatingType"
+                        placeholder="tipo" aria-label="Type" required>
+                    <label for="floatingType">tipo</label>
+                </div>
+            </div>
+        </div>
+        <!-- Form Second Line -->
+        <div class="row">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input formControlName="arrival" type="date" class="form-control" id="floatingArrival"
+                        placeholder="data de chegada" aria-label="arrival" required>
+                    <label for="floatingArrival">chegada</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input formControlName="departure" type="date" class="form-control" placeholder="data de partida" aria-label="departure"
+                        required>
+                    <label for="floatingDeparture">partida</label>
+                </div>
+            </div>
+        </div>
+        <div class="d-grid col-2 mx-auto">
+            <button type="submit"  class="btn btn-warning">Cadastrar</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,12 @@
+<div [formGroup]="formGroup">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" 
+            id="floatingFirstName"
+            [placeholder]="name"
+            [name]="controlName"
+            [formControlName]="controlName">
+        <label class="col-sm-2 col-form-label" for="floatingFirstName">nome</label>
+        <div *ngIf="validate.hasErrorValidate(formControl, 'required')" class="invalid-tooltip">Campo obrigatório</div>
+        <div *ngIf="validate.hasErrorValidate(formControl, 'minlength')" class="invalid-tooltip">Campo precisa ter no mínimo 3 caracteres</div>
+    </div>
+</div>

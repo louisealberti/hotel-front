@@ -8,6 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { CustomerModule } from './customer/customer.module';
 import { CoreModule } from './core/core.module';
 import { MessageComponent } from './shared/component/messages/message.component';
+import { RoomModule } from './room/room.module';
+import { ManagerModule } from './manager/manager.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { MessageComponent } from './shared/component/messages/message.component'
     FormsModule,
     HttpClientModule,
     CustomerModule,
+    RoomModule,
+    ManagerModule,
     CoreModule,
     AppRoutingModule,
   ],

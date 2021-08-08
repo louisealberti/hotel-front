@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { catchError, map, retry, tap } from "rxjs/operators";
 
-import { Customer } from "./customer";
+import { Customer } from "../shared/models/customer";
 import { MessageService } from "../shared/component/messages/message.service";
 
 
@@ -13,11 +13,13 @@ import { MessageService } from "../shared/component/messages/message.service";
 })
 export class CustomerService {
 
-    private customersUrl: string = 'http://localhost:8080/api/customer';
+    private customersUrl: string = 'http://localhost:8080/api/customer/';
 
     httpOptions = {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Methods': 
-        'GET,PUT,POST,DELETE,PATCH,OPTIONS'})
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json', 'Access-Control-Allow-Methods':
+                'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+        })
     };
 
     constructor(private http: HttpClient, private messageService: MessageService) { }
@@ -25,21 +27,21 @@ export class CustomerService {
     /** GET customers from the server */
     getCustomers(): Observable<Customer[]> {
         return this.http.get<Customer[]>(this.customersUrl)
-          .pipe(
-            tap(_ => this.log('fetched customer')),
-            catchError(this.handleError<Customer[]>('getCustomers', []))
-          );
-      }
+            .pipe(
+                tap(_ => this.log('fetched customer')),
+                catchError(this.handleError<Customer[]>('getCustomers', []))
+            );
+    }
 
     /** GET customer by id. Return `undefined` when id not found */
     getCustomerNo404<Data>(id: number): Observable<Customer> {
         const url = `${this.customersUrl}/${id}`;
         return this.http.get<Customer[]>(url)
             .pipe(
-                map(customers =>customers[0]),
+                map(customers => customers[0]),
                 tap(h => {
                     const outcome = h ? `fetched` : `did not find`;
-                    this.log(`${outcome} hero id=${id}`);
+                    this.log(`${outcome} customer id=${id}`);
                 }),
                 catchError(this.handleError<Customer>(`getCustomer id=${id}`))
             );
@@ -50,20 +52,20 @@ export class CustomerService {
         const url = `${this.customersUrl}/${id}`;
         return this.http.get<Customer>(url).pipe(
             tap(_ => this.log(`fetched customer id=${id}`)),
-            catchError(this.handleError<Customer>(`getHero id=${id}`))
+            catchError(this.handleError<Customer>(`getRoom id=${id}`))
         );
     }
 
     /** GET customers whose name contains the search term */
     searchCustomers(term: string): Observable<Customer[]> {
-        if(term.trim()) {
+        if (term.trim()) {
             return of([]);
         }
         return this.http.get<Customer[]>(`${this.customersUrl}/?name=${term}`).pipe(
             tap(x => x.length ?
-                this.log(`found heroes matching "${term}"`) :
+                this.log(`found customers matching "${term}"`) :
                 this.log(`no customers matching "${term}`)),
-                catchError(this.handleError<Customer[]>('searchCustomers', []))
+            catchError(this.handleError<Customer[]>('searchCustomers', []))
         );
     }
 
@@ -73,7 +75,7 @@ export class CustomerService {
             .pipe(
                 retry(2),
                 catchError(this.handleError<Customer>('addCustomer'))
-        );
+            );
     }
 
     /** DELETE: delete the customer from the server */
@@ -83,7 +85,7 @@ export class CustomerService {
         return this.http.delete<Customer>(url, this.httpOptions)
             .pipe(
                 tap(_ => this.log(`deleted customer id=${id}`)),
-                catchError(this.handleError<Customer>('deleteCusomer'))
+                catchError(this.handleError<Customer>('deleteCustomer'))
             );
     }
 
@@ -102,22 +104,22 @@ export class CustomerService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
+    private handleError<T>(operation = 'operation', result?: T) {
+        return (error: any): Observable<T> => {
 
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+            // TODO: send the error to remote logging infrastructure
+            console.error(error); // log to console instead
 
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
+            // TODO: better job of transforming error for user consumption
+            this.log(`${operation} failed: ${error.message}`);
 
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
+            // Let the app keep running by returning an empty result.
+            return of(result as T);
+        };
+    }
 
-  /** Log a CustomerService message with the MessageService */
-  private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
-  }
+    /** Log a CustomerService message with the MessageService */
+    private log(message: string) {
+        this.messageService.add(`HeroService: ${message}`);
+    }
 }
