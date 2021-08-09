@@ -1,0 +1,28 @@
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Quarto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let customer of _customers">
+                <td>{{ customer.id }}</td>
+                <td>{{ customer.firstName }} {{ customer.lastName }}</td>
+                <td *ngIf="profileForm">
+                    <form [formGroup]="profileForm" (ngSubmit)="submit()" class="row">
+                        <select formControlName="room" placeholder="quarto" class="col-8 custom-select mr-sm-2" [(ngModel)]="_rooms"
+                            name="rooms" #Rooms>
+                            <option *ngFor="let room of _rooms" value="{{ room.number }}">{{ room.number }} - {{ room.type }}</option>
+                        </select>
+                        <div class="d-grid col-2 mx-auto">
+                            <button type="submit" class="btn btn-warning">Reservar</button>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

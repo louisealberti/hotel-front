@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CustomerListComponent } from '../customer/customer-list/customer-list.component';
 import { CustomerProfileEditorComponent } from '../customer/customer-profile-editor/customer-profile-editor.component';
 import { CustomerRegistrationComponent } from '../customer/customer-registration/customer-registration.component';
+import { CustomerReservationComponent } from '../customer/customer-reservation/customer-reservation.component';
 import { RoomCreateComponent } from '../room/room-create/room-create.component';
 import { RoomEditorComponent } from '../room/room-editor/room-editor.component';
 import { RoomListComponent } from '../room/room-list/room-list.component';
@@ -18,6 +19,10 @@ const routes: Routes = [
         component: ManagerDashboardComponent,
         children: [
             {
+                path: 'customer/reservation',
+                component: CustomerReservationComponent,
+            },
+            {
                 path: 'customer/list',
                 component: CustomerListComponent,
             },
@@ -26,7 +31,7 @@ const routes: Routes = [
                 component: CustomerRegistrationComponent,
             },
             {
-                path: 'customer:id/profile/editor',
+                path: 'customer/edit/:id',
                 component: CustomerProfileEditorComponent,
             },
             {
@@ -38,10 +43,9 @@ const routes: Routes = [
                 component: RoomCreateComponent,
             },
             {
-                path: 'room/edit',
+                path: 'room/edit/:id',
                 component: RoomEditorComponent,
             },
-
         ]
     },
 ];

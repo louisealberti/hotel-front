@@ -1,3 +1,5 @@
+import { Room } from "./room";
+
 export interface Customer {
     id: number;
     firstName: string;
@@ -8,5 +10,5 @@ export interface Customer {
     address: string;
     password: string;
     bill?: number;
-    room?: string;
+    room?: Room;
 }

@@ -52,7 +52,7 @@ export class CustomerService {
         const url = `${this.customersUrl}/${id}`;
         return this.http.get<Customer>(url).pipe(
             tap(_ => this.log(`fetched customer id=${id}`)),
-            catchError(this.handleError<Customer>(`getRoom id=${id}`))
+            catchError(this.handleError<Customer>(`getCustomer id=${id}`))
         );
     }
 

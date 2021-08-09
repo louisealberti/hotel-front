@@ -48,12 +48,9 @@ export class RoomCreateComponent implements OnInit {
         const room = this.roomForm.getRawValue() as Room;
         this.addRoom(room);
 
-        this.router.navigateByUrl('room/list');
-    }
-
-    onReset(): void {
-        this.submitted = false;
         this.roomForm.reset();
+        this.router.navigateByUrl('dashboard/room/list');
+        this.submitted = false;
     }
 
     private addRoom(room: Room): void {

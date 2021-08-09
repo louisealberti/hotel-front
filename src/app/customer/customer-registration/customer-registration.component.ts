@@ -52,13 +52,8 @@ export class CustomerRegistrationComponent implements OnInit {
         const customer = this.profileForm.getRawValue() as Customer;
         this.addCustomer(customer);
 
-        this.router.navigateByUrl('customer/list');
+        this.router.navigateByUrl('dashboard/customer/list');
     }
-
-    onReset(): void {
-        this.submitted = false;
-        this.profileForm.reset();
-      }
 
     private addCustomer(customer: Customer): void {
         this.customerService.addCustomer(customer).subscribe(() => {

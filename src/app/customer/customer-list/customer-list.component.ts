@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 import { Customer } from "../../shared/models/customer";
 import { CustomerService } from "../customer.service";
@@ -14,7 +15,8 @@ export class CustomerListComponent implements OnInit {
     _filterBy: string = "";
     filteredCustomers: Customer[] = [];
 
-    constructor(private customerService: CustomerService) { }
+    constructor(private customerService: CustomerService,
+                private router: Router) { }
 
     ngOnInit(): void { 
         this.customerService.getCustomers().subscribe((customers: Customer[]) =>this._customers = customers);
@@ -28,6 +30,10 @@ export class CustomerListComponent implements OnInit {
     deleteCustomer(customer: Customer): void {
         this._customers = this._customers.filter(h => h !== customer); 
         this.customerService.deleteCustomer(customer.id).subscribe();
+    }
+
+    edit(customer: Customer): void {
+        this.router.navigateByUrl('dashboard/customer/edit/' + customer.id);
     }
 
     set filter(value: string) {

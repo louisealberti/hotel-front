@@ -5,8 +5,8 @@
                 <th>ID</th>
                 <th>Número</th>
                 <th>Tipo</th>
-                <th>Disponibilidade</th>
-                <th>Cliente</th>
+                <th>Data de Chegada</th>
+                <th>Data de Partida</th>
                 <th>Editar</th>
                 <th>Remover</th>
             </tr>
@@ -18,10 +18,10 @@
                 <td>{{ room.type }}</td>
                 <td>{{ room.arrival }}</td>
                 <td>{{ room.departure }}</td>
-                <td><button (click)="editRoom(room)" class="btn btn-warning">Editar</button></td>
+                <td><button (click)="edit(room)" class="btn btn-warning">Editar</button></td>
                 <td><button (click)="deleteRoom(room)" class="btn btn-warning">Excluir</button></td>
             </tr>
         </tbody>
-
     </table>
+    <router-outlet></router-outlet>
 </div>

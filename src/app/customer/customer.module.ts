@@ -3,7 +3,6 @@ import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 
-import { CustomerHomeComponent } from "./customer-home/customer-home.component";
 import { CustomerListComponent } from "./customer-list/customer-list.component";
 import { CustomerProfileComponent } from "./customer-profile/customer-profile.component";
 import { CustomerRegistrationComponent } from "./customer-registration/customer-registration.component";
@@ -23,7 +22,6 @@ import { BrowserModule } from "@angular/platform-browser";
         CustomerRoutingModule,
     ],
     declarations: [
-        CustomerHomeComponent,
         CustomerListComponent,
         CustomerProfileComponent,
         CustomerProfileEditorComponent,

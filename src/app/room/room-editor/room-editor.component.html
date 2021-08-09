@@ -1,4 +1,4 @@
-<div class="container w-50">
+<div class="container w-50" *ngIf="roomForm">
     <form [formGroup]="roomForm" (ngSubmit)="submit()" class="col g-3 needs-validation" novalidate>
         <!-- Form First Line -->
         <div class="row h-75">
@@ -21,16 +21,16 @@
         <div class="row">
             <div class="col">
                 <div class="form-floating mb-3">
-                    <input formControlName="available" type="text" class="form-control" id="floatingAvailable"
-                        placeholder="disponível" aria-label="available" required>
-                    <label for="floatingAvailable">disponível</label>
+                    <input formControlName="arrival" type="date" class="form-control" id="floatingArrival"
+                        placeholder="chegada" aria-label="arrival" required>
+                    <label for="floatingArrival">data de chegada</label>
                 </div>
             </div>
             <div class="col">
                 <div class="form-floating mb-3">
-                    <input formControlName="customer" type="text" class="form-control" placeholder="cliente" aria-label="customer"
+                    <input formControlName="departure" type="date" class="form-control" placeholder="partida" aria-label="departure"
                         required>
-                    <label for="floatingCustomer">cliente</label>
+                    <label for="floatingDeparture">data de partida</label>
                 </div>
             </div>
         </div>

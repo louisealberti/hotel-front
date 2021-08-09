@@ -17,6 +17,7 @@
                 <th>e-mail</th>
                 <th>Telefone</th>
                 <th>Endereço</th>
+                <th>Quarto</th>
                 <th> </th>
             </tr>
         </thead>
@@ -26,8 +27,10 @@
                 <td>{{ customer.firstName }} {{ customer.lastName }}</td>
                 <td>{{ customer.email }}</td>
                 <td>{{ customer.phone }}</td>
-                <td>{{ customer.address}}</td>
+                <td>{{ customer.address }}</td>
+                <td>{{ customer.room }}</td>
                 <td><button (click)="deleteCustomer(customer)" class="btn btn-warning">Excluir</button></td>
+                <td><button (click)="edit(customer)" class="btn btn-warning">Editar</button></td>
             </tr>
         </tbody>
 
